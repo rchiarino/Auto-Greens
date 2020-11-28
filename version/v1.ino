@@ -42,6 +42,19 @@ float soilHum = 0;
 
 int deltaHum = ambientHum - soilHum;
 
+// // These constants won't change. They're used to give names to the pins used:
+// const int ledPin = 2;            // Digital output pin that the LED is attached to
+// const int pumpPin = 12;          // Digital output pin that the water pump is attached to
+// const int waterLevelPin = A3;    // Analoge pin water level sensor is connected to
+// const int moistureSensorPin = 7; // Digital input pin used to check the moisture level of the soil
+
+// // These are the values to edit - see the instructional video to find out what needs adjusting and why:
+
+// double checkInterval = 1800;   //time to wait before checking the soil moisture level - default it to an hour = 1800000
+// int waterLevelThreshold = 380; // threshold at which we flash the LED to warn you of a low water level in the pump tank - set this as per the video explains
+// int emptyReservoirTimer = 90;  // how long the LED will flash to tell us the water tank needs topping up - default it to 900 = 30mins
+// int amountToPump = 300;        // how long the pump should pump water for when the plant needs it
+
 //WiFi
 void WIFInit()
 {
@@ -154,18 +167,6 @@ void streamTimeoutCallback(bool timeout)
     }
 }
 
-//Control with internet connection.
-void with_internet()
-{
-    // Serial.println("with internet");
-}
-
-//Control without internet connection.
-void without_internet()
-{
-    //code no internet
-}
-
 //Temperature
 void temp_sensor()
 {
@@ -187,11 +188,8 @@ void temp_sensor()
         delay(500);
         digitalWrite(LED, LOW);
 
-        if (ambientTemp != t1 || ambientHum != h1)
-        {
-            ambientTemp = t1;
-            ambientHum = h1;
-        }
+        ambientTemp = t1;
+        ambientHum = h1;
 
         //Set Humy on firebase
         Firebase.setInt(firebaseData, "/humedad/TemperatureSetting/thermostatHumidityAmbient", h1);
@@ -202,7 +200,7 @@ void temp_sensor()
         Serial.println(ambientTemp);
         Serial.println(ambientHum);
     }
-    delay(60000); //1m //TODO: cambiar a 3m
+    delay(120000);
 }
 
 void setup()
@@ -221,6 +219,24 @@ void setup()
 
     //Start Firebase
     FirebaseInit();
+
+    // // put your setup code here, to run once:
+    // Serial.begin(9600);
+    // pinMode(ledPin, OUTPUT);
+    // pinMode(pumpPin, OUTPUT);
+    // pinMode(moistureSensorPin, INPUT);
+
+    // //flash the LED five times to confirm power on and operation of code:
+    // for (int i = 0; i <= 4; i++)
+    // {
+    //     digitalWrite(ledPin, HIGH);
+    //     delay(300);
+    //     digitalWrite(ledPin, LOW);
+    //     delay(300);
+    // }
+    // delay(2000);
+
+    // digitalWrite(ledPin, HIGH); // turn the LED on
 }
 
 void loop()
@@ -228,27 +244,43 @@ void loop()
 
     temp_sensor();
 
-    if (WiFi.status() != WL_CONNECTED)
-    {
+    //     // put your main code here, to run repeatedly:
 
-        Serial.println("Not Connected");
-        MODE = 1;
-    }
-    else
-    {
+    //     sensorWaterLevelValue = analogRead(waterLevelPin); //read the value of the water level sensor
+    //     Serial.print("Water level sensor value: ");        //print it to the serial monitor
+    //     Serial.println(sensorWaterLevelValue);
 
-        MODE = 0;
-    }
+    //     if (sensorWaterLevelValue < waterLevelThreshold)
+    //     { //check if we need to alert you to a low water level in the tank
+    //         for (int i = 0; i <= emptyReservoirTimer; i++)
+    //         {
+    //             digitalWrite(ledPin, LOW);
+    //             delay(1000);
+    //             digitalWrite(ledPin, HIGH);
+    //             delay(1000);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         digitalWrite(ledPin, HIGH);
+    //         delay(checkInterval); //wait before checking the soil moisture level
+    //     }
 
-    //Mode detection
-    if (MODE == 0)
-    {
+    //     // check soil moisture level
 
-        with_internet();
-    }
-    else
-    {
+    //     moistureSensorValue = digitalRead(moistureSensorPin); //read the moisture sensor and save the value
+    //     Serial.print("Soil moisture sensor is currently: ");
+    //     Serial.print(moistureSensorValue);
+    //     Serial.println(" ('1' means soil is too dry and '0' means the soil is moist enough.)");
 
-        without_internet();
-    }
+    //     if (moistureSensorValue == 1)
+    //     {
+    //         //pulse the pump
+    //         digitalWrite(pumpPin, HIGH);
+    //         Serial.println("pump on");
+    //         delay(amountToPump); //keep pumping water
+    //         digitalWrite(pumpPin, LOW);
+    //         Serial.println("pump off");
+    //         delay(800); //delay to allow the moisture in the soil to spread through to the sensor
+    //     }
 }
