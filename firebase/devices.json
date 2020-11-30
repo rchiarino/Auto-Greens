@@ -1,0 +1,56 @@
+[
+    {
+        "id": "bomba",
+        "type": "action.devices.types.SPRINKLER",
+        "traits": [
+            "action.devices.traits.OnOff"
+        ],
+        "name": {
+            "defaultNames": [
+                "SN1"
+            ],
+            "name": "Simple sprinkler",
+            "nicknames": [
+                "Regador"
+            ]
+        },
+        "deviceInfo": {
+            "manufacturer": "Renzo Chiarino",
+            "model": "H. A. S.",
+            "hwVersion": "1.0",
+            "swVersion": "3.0"
+        },
+        "willReportState": true
+    },
+    {
+        "id": "humedad",
+        "type": "action.devices.types.THERMOSTAT",
+        "traits": [
+            "action.devices.traits.TemperatureSetting"
+        ],
+        "name": {
+            "defaultNames": [
+                "thermostat"
+            ],
+            "name": "Simple thermostat",
+            "nicknames": [
+                "Humedad"
+            ]
+        },
+        "deviceInfo": {
+            "manufacturer": "Renzo Chiarino",
+            "model": "H. A. S.",
+            "hwVersion": "1.0",
+            "swVersion": "3.0"
+        },
+        "willReportState": true,
+        "attributes": {
+            "availableThermostatModes": "off, cool",
+            "thermostatTemperatureRange": {
+                "minThresholdCelsius": 15,
+                "maxThresholdCelsius": 30
+            },
+            "thermostatTemperatureUnit": "C"
+        }
+    }
+]
