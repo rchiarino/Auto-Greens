@@ -13,5 +13,17 @@ for a complete gide and setup of Firebase and Actions on Google use [THIS](https
 *  DHT 11 Sensor
 *  Water Level Sensor
 *  Sumergable  Pump (5v)
-> Authors: Lucas Alvarez -- Renzo Chiarino
 
+
+---
+### Schematics
+![Wires](https://github.com/rchiarino/Auto-Greens/blob/master/img/autogreens_bb.png?raw=true)
+
+---
+### 3D
+* POT
+* BODY
+* BASE
+
+---
+> Authors: Lucas Alvarez -- Renzo Chiarino
