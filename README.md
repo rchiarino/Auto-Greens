@@ -21,9 +21,7 @@ for a complete gide and setup of Firebase and Actions on Google use [THIS](https
 
 ---
 ### 3D
-* POT
-* BODY
-* BASE
+[Files](https://www.thingiverse.com/thing:4670541)
 
 ---
 > Authors: Lucas Alvarez -- Renzo Chiarino
