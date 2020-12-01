@@ -5,7 +5,7 @@ this project contains the basic code for funcionality and testing **NOT** deploy
 
 for a complete gide and setup of Firebase and Actions on Google use [THIS](https://github.com/actions-on-google/smart-home-nodejs).
 
----
+
 
 ### Materials
 *  ESP 32  Node MCU
@@ -15,13 +15,17 @@ for a complete gide and setup of Firebase and Actions on Google use [THIS](https
 *  Sumergable  Pump (5v)
 
 
----
-### Schematics
+
+## Schematics
 ![Wires](https://github.com/rchiarino/Auto-Greens/blob/master/img/autogreens_bb.png?raw=true)
 
----
-### 3D
+
+## 3D
 [Files](https://www.thingiverse.com/thing:4670541)
 
----
-> Authors: Lucas Alvarez -- Renzo Chiarino
+
+## Code
+See this [File](https://github.com/rchiarino/rchiarino/Auto-Greens/blob/master/autogreen.ino)
+
+## License
+See [LICENSE](LICENSE).
