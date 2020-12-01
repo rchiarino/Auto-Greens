@@ -25,7 +25,11 @@ for a complete gide and setup of Firebase and Actions on Google use [THIS](https
 
 
 ## Code
-See this [File](https://github.com/rchiarino/rchiarino/Auto-Greens/blob/master/autogreen.ino)
+This project contains:
+
+The code for Arduino [see this file](https://github.com/rchiarino/rchiarino/Auto-Greens/blob/master/autogreen.ino)
+
+The code for basic device setup to Firebase [see this file](https://github.com/rchiarino/rchiarino/Auto-Greens/blob/master/firebase/devices.json)
 
 ## License
 See [LICENSE](LICENSE).
