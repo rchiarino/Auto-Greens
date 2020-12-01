@@ -3,7 +3,7 @@
 The objetive of this project is to been able to control a **small**, **medium** or **large** pot, with Arduino and [Google Firebase](https://firebase.google.com/),<br>
 this project contains the basic code for funcionality and testing **NOT** deployment of Firebase.
 
-for a complete gide and setup of Firebase and Actions on Google use [THIS](https://github.com/actions-on-google/smart-home-nodejs).
+for a complete gide and setup of Firebase and Actions on Google use [this](https://github.com/actions-on-google/smart-home-nodejs).
 
 
 
@@ -21,6 +21,8 @@ for a complete gide and setup of Firebase and Actions on Google use [THIS](https
 
 
 ## 3D
+>This files dont include printing settings
+
 [Files](https://www.thingiverse.com/thing:4670541)
 
 
