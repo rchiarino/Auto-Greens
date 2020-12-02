@@ -88,39 +88,8 @@ void FirebaseInit()
 void streamCallback(StreamData data)
 {
 
-    // Serial.println("Stream Data...");
-    // Serial.println(data.streamPath());
-    // Serial.println(data.dataType());
     Serial.println();
     Serial.println(data.dataPath());
-
-    //Print out the value
-    //Stream data can be many types which can be determined from function dataType
-
-    // if (data.dataType() == "int")
-    // {
-    //     Serial.println(data.intData());
-    // }
-    // else if (data.dataType() == "float")
-    // {
-    //     Serial.println(data.floatData(), 5);
-    // }
-    // else if (data.dataType() == "double")
-    // {
-    //     printf("%.9lf\n", data.doubleData());
-    // }
-    // else if (data.dataType() == "boolean")
-    // {
-    //     Serial.println(data.boolData() == 1 ? "true" : "false");
-    // }
-    // else if (data.dataType() == "string")
-    // {
-    //     Serial.println(data.stringData());
-    // }
-    // else if (data.dataType() == "json")
-    // {
-    //     //Serial.println(data.jsonString());
-    // }
 
     //!CHECK IF PUMP IS ON OR OF
     if (data.dataPath() == "/bomba/OnOff")
