@@ -11,7 +11,7 @@
 #include <Adafruit_Sensor.h>
 
 //Definitions
-#define DHT1PIN 18
+#define DHT1PIN 14
 
 DHT dht1(DHT1PIN, DHT11, 15);
 
@@ -23,31 +23,27 @@ DHT dht1(DHT1PIN, DHT11, 15);
 #define FIREBASE_AUTH "FIREBASE AUTH"
 
 FirebaseData firebaseData;
-FirebaseJson json1;
-FirebaseJson json2;
 
 //onboard LED (BLUE)
 #define LED 2
 
-#define Pump 12
-#define WaterSensor A3
-#define HumiditySensor 7
+#define Pump 13          //digital
+#define WaterSensor 12   //analog
+#define HumiditySensor 9 //digital
 
 //Status
-int pump = 0;
+int pump = false;
 
 //Sensor LOG
 float ambientTemp = 0; //ambient Temp from DHT
 float ambientHum = 0;  //ambient Temp from DHT
-int soilHum = 0;       //soil Temp
+int soilHum = 0;       //soil Humidity 0 dry 1 moist
 int water = 0;         //water Level from T1592 P
 
-int deltaHum = ambientHum - soilHum;
-
-double soilDelay = 1800; //time to wait before checking the soil sensor
-int level = 380;         // water limit, this triggers the led and app.
-int ledTimmer = 90;      //  90 = 30mins
-int pumpDelay = 300;     // how long the pump is on
+double soilDelay = 30000; //time to wait before checking the soil sensor //*default 1800
+int level = 1800;         // water limit, this triggers the led and app. //*max 1/2 water sensor
+int ledTimmer = 90;       //  90 = 30mins
+int pumpDelay = 300;      // how long the pump is on
 
 //WiFi
 void WIFInit()
@@ -90,34 +86,6 @@ void streamCallback(StreamData data)
 
     Serial.println();
     Serial.println(data.dataPath());
-
-    //!CHECK IF PUMP IS ON OR OF
-    if (data.dataPath() == "/bomba/OnOff")
-    {
-
-        FirebaseJson &json = data.jsonObject();
-
-        size_t len = json.iteratorBegin();
-        String key, value = "";
-        int type = 0;
-
-        for (size_t i = 0; i < len; i++)
-        {
-            json.iteratorGet(i, type, key, value); //i index, value - on off
-
-            if (value == "true")
-            {
-                Serial.println("on");
-                digitalWrite(LED, HIGH);
-            }
-            else
-            {
-                Serial.println("off");
-                digitalWrite(LED, LOW);
-            }
-        }
-        json.iteratorEnd();
-    }
 }
 
 //Time out
